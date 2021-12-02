@@ -1,0 +1,32 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+Check Messages for Spam
+<hr style="color: #cc6600;" />
+{% endblock %}
+
+{% block title %}CheckSpam_Page{% endblock %}
+
+
+{% block content %}
+<div class="container pos form-style">
+
+    <form id='check-form' method="POST">
+        {% csrf_token %}
+        <div class='form-input'>
+            <p id="form-p">Please enter the message content in the box below</p>
+            <textarea type='text' placeholder='Enter the email content here...' rows="10" cols="100" required
+                name="checkField"></textarea>
+        </div>
+
+        <div class='form-input' style="text-align: center;">
+            <button class="btn btn-success" type='submit' id='submit'>Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

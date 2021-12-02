@@ -1,0 +1,88 @@
+{% extends 'SpamIdentification/base.html' %}
+{% load static %}
+
+{% block page_name %}
+  Spam Message Detection
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}Final Project{% endblock %}
+
+
+
+{% block content %}
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+          <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+                <div class="card-body">
+                    <h5 class="card-title">Introduction</h5>
+                    <hr style="color: black;">
+                    <img class="card-img-top" src="{% static 'images/intro.png' %}" style="height: 10em; width: 10em;" >
+                </div>
+          </div>
+      </div>   
+  
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <a style="text-decoration: none; color: black" href="{% url 'SpamIdentification:check' %}">
+          <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+                <div class="card-body">
+                    <h5 class="card-title">Check Message</h5>
+                    <hr style="color: black;">
+                    <img class="card-img-top" src="{% static 'images/spam1.png' %}" style="height: 10em; width: 10em;" >
+                </div>
+          </div>
+        </a>  
+      </div> 
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <a style="text-decoration: none; color: black" href="{% url 'SpamIdentification:login' %}">
+          <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+            <div class="card-body">
+                <h5 class="card-title">Admin Login</h5>
+                <hr style="color: black;">
+                <img class="card-img-top" src="{% static 'images/admin.png' %}" style="height: 10em; width: 10em;" >
+            </div>
+          </div>
+        </a>  
+      </div> 
+
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+      <a style="text-decoration: none; color: black" href="{% url 'SpamIdentification:example' %}">  
+        <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+          <div class="card-body">
+              <h5 class="card-title">Examples of Spam Messages</h5>
+              <hr style="color: black;">
+              <img class="card-img-top" src="{% static 'images/exmp.png' %}" style="height: 10em; width: 10em;" >
+          </div>
+        </div>
+      </a>  
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+      <a style="text-decoration: none; color: black" href="{% url 'SpamIdentification:prevention' %}"> 
+      <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+        <div class="card-body">
+            <h5 class="card-title">Prevention from Spam Messages</h5>
+            <hr style="color: black;">
+            <img class="card-img-top" src="{% static 'images/prev.jpg' %}" style="height: 10em; width: 10em;" >
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+      <a style="text-decoration: none; color: black" href="{% url 'chatroom:home' %}"> 
+      <div class="card mb-4 mt-3 shadow rounded" style="width: 18rem; border-color: #cc6600">
+        <div class="card-body">
+            <h5 class="card-title">Enter Chat Room</h5>
+            <hr style="color: black;">
+            <img class="card-img-top" src="{% static 'images/chatroom.jfif' %}" style="height: 12em; width: 12em;" >
+        </div>
+      </div>
+    </a>
+    </div>
+    
+
+   
+     
+
+{% endblock %}

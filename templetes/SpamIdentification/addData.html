@@ -1,0 +1,37 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+  Add Data
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}AddData_Page{% endblock %}
+
+
+{% block content %}
+
+<div class="container pos form-style">
+
+    <form id='check-form' method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-input">
+              <label for="{{ field.id_for_label }}">{{field.label}}</label>
+              {{field}}
+              {% for error in field.errors %}
+                  <span class="help-block" style="color:red">{{error}}</span>
+              {% endfor %}
+          </div>
+        {% endfor %}
+        <div class='form-input' style="text-align: center;">
+            <button class="btn btn-success" type='submit' id='submit'>Submit</button>
+        </div>
+    </form>
+</div>
+
+  
+
+  
+
+{% endblock %}

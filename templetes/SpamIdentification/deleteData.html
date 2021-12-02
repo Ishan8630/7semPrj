@@ -1,0 +1,32 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+  Delete Data
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}DeleteData_Page{% endblock %}
+
+
+{% block content %}
+
+<div class="container pos form-style">
+
+    <form id='check-form'  method="POST">
+        {% csrf_token %}
+        <div class='form-input'>
+            <p id="form-p">Are you sure you want to delete the data?</p>
+        </div>
+
+        <div class='form-input' style="text-align: center;">
+            <button class="btn btn-danger" type='submit' id='submit'>Delete</button>
+        </div>
+    </form>
+</div>
+
+  
+
+  
+
+{% endblock %}

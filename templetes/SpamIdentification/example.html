@@ -1,0 +1,41 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+  Examples
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}Example_Page{% endblock %}
+
+
+{% block content %}
+  {% if spam_list%}
+  <div class="container pos">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Some Examples of Spam Messages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for spam in spam_list %}
+              <tr>
+                <td>{{ spam.message }}</td>
+              </tr>  
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+  </div>
+    
+
+  {% else %}
+    <h3>There are no data to display now.</h3>
+  {% endif %}
+  
+
+  
+
+{% endblock %}

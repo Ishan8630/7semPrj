@@ -1,0 +1,44 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+  Result
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}Result_Page{% endblock %}
+
+
+{% block content %}
+
+{% if result == 1 %}
+<div class="col-lg-6 mx-auto">
+
+ 
+  <div class="card mb-4 mt-3 p-5 shadow rounded" style="border: solid 1px green;">
+      <h5 style="text-align: center; text-size-adjust: 80%;">The message is safe and is not detected as spam.</h5>
+      <div class=" pt-4 mt-4" style="border-top:  solid 1px green; text-align: center;">
+        <a href="{% url 'SpamIdentification:check' %}" class="btn btn-success rounded"> Check Another Message</a>
+      </div>
+  </div>
+
+</div>
+{% else %}
+<div class="col-lg-6 mx-auto">
+
+ 
+  <div class="card mb-4 mt-3 p-5 shadow rounded" style="border: solid 1px red;">
+      <h5 style="text-align: center; text-size-adjust: 80%;">The message is detected as spam.</h5>
+      <div class=" pt-4 mt-4" style="border-top:  solid 1px red; text-align: center;">
+        <a href="{% url 'SpamIdentification:check' %}" class="btn btn-danger rounded"> Check Another Message</a>
+      </div>
+  </div>
+
+</div>
+{% endif %}        
+
+  
+
+  
+
+{% endblock %}

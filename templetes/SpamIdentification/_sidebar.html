@@ -1,0 +1,52 @@
+{% extends 'SpamIdentification/base.html' %}
+{% load static %}
+
+{% block sidebar %}
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white side">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <h4>Final Year Project</h4>  
+          <hr style="color: #cc6600;  height:1px;"/>
+          {% if user.is_authenticated %}
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Hello {{ request.user }}</span></a>
+          {% endif %}  
+          <a href="{% url 'SpamIdentification:home' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>DashBoard</span></a
+          >
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Introduction</span></a
+          >
+          <a href="{% url 'SpamIdentification:check' %}" class="list-group-item list-group-item-action py-2 ripple">
+            <span>Check Email</span>
+          </a>
+          <a href="{% url 'SpamIdentification:example' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Examples</span></a
+          >
+          <a href="{% url 'SpamIdentification:prevention' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Prevention</span></a
+          >
+          <a href="{% url 'chatroom:home' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>ChatRoom</span></a
+          >
+          {% if user.is_authenticated %}
+            <a href="{% url 'SpamIdentification:list' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>List Data</span></a
+            >
+            <a href="{% url 'SpamIdentification:add' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Add Data</span></a
+            >
+            <a href="{% url 'SpamIdentification:logout' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Logout</span></a
+            >
+          {% else %}
+            <a href="{% url 'SpamIdentification:login' %}" class="list-group-item list-group-item-action py-2 ripple"
+            ><span>Admin Login</span></a
+            >
+            {% endif %}  
+        </div>
+      </div>
+    </nav>
+  
+  
+{% endblock %}

@@ -1,0 +1,33 @@
+#header {
+    background: #cc6600;
+}    
+   
+.delete-confirmation form input[type="submit"] {
+    background: #cc6600;
+}   
+
+.delete-confirmation form .cancel-link {
+    background: #cc6600;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button{
+	background: #cc6600;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #cc6600;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #cc6600;
+}
+.button.default:hover, input[type=submit].default:hover {
+    background: #cc6600;
+}
+.module h2, .module caption, .inline-group h2 {
+    background: #cc6600;
+}
+
+div.breadcrumbs {
+    background: #cc6600;
+}

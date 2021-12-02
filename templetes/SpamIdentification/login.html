@@ -1,0 +1,36 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+  Admin Login
+  <hr style="color: #cc6600;"/>
+{% endblock %}
+
+{% block title %}AdminLogin_Page{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="col-md-6 offset-md-3">
+      <div class="login-form bg-light mt-4 p-4">
+          <form id="post-form" method="POST" class="row g-5">
+              {% csrf_token %}
+              <h4>Admin Login</h4>
+              <div class="col-12">
+                  <label>Username</label>
+                  <input type="text" name="username" class="form-control" id="username">
+              </div>
+              <div class="col-12">
+                  <label>Password</label>
+                  <input type="password" name="password" class="form-control" id="password">
+              </div>
+              <div class="col-12">
+                  <button class="btn btn-block float-end" style="color: white; background-color: #cc6600;"
+                      type="submit">Login</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

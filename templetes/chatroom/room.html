@@ -1,0 +1,135 @@
+{% extends 'SpamIdentification/_sidebar.html' %}
+{% load static %}
+
+{% block page_name %}
+{{room}}
+<hr style="color: #cc6600;" />
+{% endblock %}
+
+{% block title %}Chat Room{% endblock %}
+
+
+{% block content %}
+<style>
+  .message {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+  }
+
+  .spam {
+    border-color: #ccc;
+    background-color: #FF5349;
+    color: white;
+  }
+
+  .message::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .time-right {
+    float: right;
+    color: white;
+
+  }
+
+  .time-left {
+    float: left;
+    color: #999;
+  }
+
+  .time-left-spam{
+    color: white;
+  }
+</style>
+<div class="container">
+  <div class="col-md-12 col-sm-12">
+    <div class="comment-wrapper">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Send a message as {{username}}
+        </div>
+        <div class="panel-body">
+          <form id="post-form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="username" id="username" value="{{username}}" /><br>
+            <input type="hidden" name="room_id" id="room_id" value="{{room_detail.id}}" />
+            <textarea class="form-control" name="message" id="message" placeholder="Enter message to be sent...."
+              rows="3" required></textarea><br>
+            <button class="btn btn-block float-end" style="color: white; background-color: #cc6600;"
+              type="submit">Send</button>
+              
+          </form>
+          <br>
+
+          <hr>
+          <div id="display" style="width:100%; height:500px; overflow: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% block extra_js %}
+<script type="text/javascript">
+  $(document).on('submit', '#post-form', function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $.ajax({
+      type: 'POST',
+      url: '/chatroom/{{room}}/',
+      data: {
+        username: $('#username').val(),
+        room_id: $('#room_id').val(),
+        message: $('#message').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function (data) {
+        // alert(data)
+      }
+    });
+    document.getElementById('message').value = ''
+  });
+
+  $(document).ready(function () {
+
+    setInterval(function () {
+      $.ajax({
+        type: 'GET',
+        url: "/chatroom/{{room}}/getmessages/",
+        success: function (response) {
+          console.log(response);
+          $("#display").empty();
+          for (var key in response.messages) {
+            if (response.messages[key].category == "ham") {
+              var temp = "<div class='message darker'><b>" + response.messages[key].user + "</b><p>" + response.messages[key].value +"</p><span class='time-left'>" + response.messages[key].date + "</span></div>";
+              $("#display").append(temp);
+            }
+            else {
+              var temp = "<div class='message spam'><b>" + response.messages[key].user + "</b><p>" + response.messages[key].value + "</p><span class='time-left-spam'>" + response.messages[key].date + "</span><span class='time-right'>" + response.messages[key].category + "</span></div>";
+              $("#display").append(temp);
+            }
+          }
+        },
+        error: function (response) {
+          console.log(response)
+        }
+      });
+    }, 1000);
+  })
+</script>
+{% endblock%}
+
+
+{% endblock %}
